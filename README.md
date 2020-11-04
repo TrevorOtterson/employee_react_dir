@@ -18,8 +18,8 @@ This app was pretty tough to create considering it was my first time using React
 
 ## Website
 
-* [Link to deployed Heroku Website]()  
+* [Link to deployed Heroku Website](https://afternoon-reaches-35223.herokuapp.com/)  
 
 ## Screenshots  
 
-![screenshot]()  
+![screenshot](./public/employee_search.png)  
