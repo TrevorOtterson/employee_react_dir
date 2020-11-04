@@ -1,18 +1,18 @@
-import React from 'react';
-import './style.css';
+import React from "react";
+import "./style.css";
 
 function SearchResults(props) {
   return (
-    <table className='table table-striped'>
-      <thead className='thead-dark'>
+    <table className="table table-striped">
+      <thead className="thead-dark">
         <tr>
-          <th scope='col'>Image</th>
-          <th scope='col'>First Name</th>
-          <th scope='col'>Last Name</th>
-          <th scope='col'>Gender</th>
-          <th scope='col'>Age</th>
-          <th scope='col'>Cell</th>
-          <th scope='col'>Email</th>
+          <th scope="col">Image</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Age</th>
+          <th scope="col">Cell</th>
+          <th scope="col">Email</th>
         </tr>
       </thead>
       <tbody>
@@ -21,7 +21,7 @@ function SearchResults(props) {
             <td>
               <img
                 src={employee.picture.thumbnail}
-                alt='searched employee'
+                alt="searched employee"
               ></img>
             </td>
             <td>{employee.name.first}</td>

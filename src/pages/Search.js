@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import API from '../utils/API';
-import Container from '../components/Container';
-import SearchForm from '../components/SearchForm';
-import SearchResults from '../components/SearchResults';
-import Row from '../components/Row';
-import Table from '../components/Table';
+import React, { Component } from "react";
+import API from "../utils/API";
+import Container from "../components/Container";
+import SearchForm from "../components/SearchForm";
+import SearchResults from "../components/SearchResults";
+import Row from "../components/Row";
+import Table from "../components/Table";
 
 class Search extends Component {
   state = {
@@ -12,63 +12,73 @@ class Search extends Component {
     employees: [],
     searchEmp: [],
     results: [],
-    error: ''
+    error: "",
   };
 
   // When the component mounts, get a list of all available base breeds and update this.state.breeds
   componentDidMount() {
     API.getEmployees()
-      .then(res => this.setState({ employees: res.data.results }))
-      .catch(err => console.log(err));
+      .then((res) => this.setState({ employees: res.data.results }))
+      .catch((err) => console.log(err));
   }
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     this.setState({ search: event.target.value });
-    const filteredChoice = this.state.employees.filter((filter)=>{
-      let searchedEmp = filter.name.first + filter.name.last 
+    const filteredChoice = this.state.employees.filter((filter) => {
+      let searchedEmp = filter.name.first + filter.name.last;
       return searchedEmp.indexOf(this.state.search) !== -1;
-    })
-    
-    this.setState({searchEmp: filteredChoice})
+    });
+
+    this.setState({ searchEmp: filteredChoice });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     API.getEmployees(this.state.search)
-      .then(res => {
-        if (res.data.status === 'error') {
+      .then((res) => {
+        if (res.data.status === "error") {
           throw new Error(res.data.results);
         }
-        this.setState({ results: res.data.results, error: '' });
+        this.setState({ results: res.data.results, error: "" });
       })
-      .catch(err => this.setState({ error: err.results }));
+      .catch((err) => this.setState({ error: err.results }));
   };
 
   render() {
-    
-      let table;
-      const searched = this.state.search;
-      let alterState
-      if (searched === undefined || searched.length === 0){alterState = false}
-      else {alterState = true}
-      if (alterState===false){table=<Table employees= {this.state.employees} />} 
-      else {table=<SearchResults results={this.state.searchEmp}/>}
-      return (
-<div>
-        <Container style={{ minHeight: '80%' }}>
-          <h3 className='text-center' style={{fontFamily: 'source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;'}}>Search For Employees</h3>
+    let table;
+    const searched = this.state.search;
+    let alterState;
+    if (searched === undefined || searched.length === 0) {
+      alterState = false;
+    } else {
+      alterState = true;
+    }
+    if (alterState === false) {
+      table = <Table employees={this.state.employees} />;
+    } else {
+      table = <SearchResults results={this.state.searchEmp} />;
+    }
+    return (
+      <div>
+        <Container style={{ minHeight: "80%" }}>
+          <h3
+            className="text-center"
+            style={{
+              fontFamily:
+                "source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;",
+            }}
+          >
+            Search For Employees
+          </h3>
           <SearchForm
             handleFormSubmit={this.handleFormSubmit}
             handleInputChange={this.handleInputChange}
             employees={this.state.employees}
           />
-          <Row>
-            {table}
-          </Row>
-          
+          <Row>{table}</Row>
         </Container>
       </div>
-      )
+    );
   }
 }
 

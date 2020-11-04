@@ -1,24 +1,24 @@
-import React from 'react';
+import React from "react";
 
 function Table(props) {
   return (
-    <table className='table table-striped'>
-      <thead className='thead-dark'>
+    <table className="table table-striped">
+      <thead className="thead-dark">
         <tr>
-          <th scope='col'>Image</th>
-          <th scope='col'>First Name</th>
-          <th scope='col'>Last Name</th>
-          <th scope='col'>Gender</th>
-          <th scope='col'>Age</th>
-          <th scope='col'>Cell</th>
-          <th scope='col'>Email</th>
+          <th scope="col">Image</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Age</th>
+          <th scope="col">Cell</th>
+          <th scope="col">Email</th>
         </tr>
       </thead>
       <tbody>
         {props.employees.map((employee) => (
           <tr key={employee.email}>
             <td>
-              <img src={employee.picture.thumbnail} alt='employee'></img>
+              <img src={employee.picture.thumbnail} alt="employee"></img>
             </td>
             <td>{employee.name.first}</td>
             <td>{employee.name.last}</td>
