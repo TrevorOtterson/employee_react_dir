@@ -4,7 +4,7 @@ import "./style.css";
 function Footer() {
   return (
     <footer className="footer">
-      <span>Designed By: Jameson Midgley</span>
+      <span>Designed By: Trevor Otterson</span>
     </footer>
   );
 }
